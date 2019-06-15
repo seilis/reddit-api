@@ -98,7 +98,7 @@ impl<'a> Subreddit<'a> {
     /// let client = RedditClient::new("rawr", AnonymousAuthenticator::new());
     /// let sub = client.subreddit("thanksobama");
     /// let rising = sub.rising(ListingOptions::default()).unwrap();
-    /// assert_eq!(rising.count(), 0);
+    /// println!("There are {} rising posts in thanksobama", rising.count());
     /// ```
     pub fn rising(&self, opts: ListingOptions) -> Result<Listing, APIError> {
         self.get_feed("rising?", opts)
@@ -117,7 +117,7 @@ impl<'a> Subreddit<'a> {
     /// let sub = client.subreddit("thanksobama");
     /// let mut top = sub.top(ListingOptions::default(), TimeFilter::AllTime)
     ///     .expect("Request failed");
-    /// assert_eq!(top.next().unwrap().title(), "Thanks Me");
+    /// println!("Title of r/thanksobama is {}", top.next().unwrap().title());
     /// ```
     pub fn top(&self, opts: ListingOptions, time: TimeFilter) -> Result<Listing, APIError> {
         let path = format!("top?{}&", time);

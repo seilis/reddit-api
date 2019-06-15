@@ -199,9 +199,10 @@
 //!
 //! Want to help? Take a look at the issue tracker!
 
+extern crate hyper;
+extern crate hyper_native_tls;
 extern crate serde;
 extern crate serde_json;
-extern crate hyper;
 
 pub mod auth;
 pub mod client;

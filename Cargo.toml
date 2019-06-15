@@ -1,7 +1,7 @@
 [package]
 name = "rawr"
-version = "0.2.0"
-authors = ["Aurora0001 <aurora01@safe-mail.net>"]
+version = "0.1.2"
+authors = ["Aaron Seilis <aaron.seilis@seilis.ca>", "Aurora0001 <aurora01@safe-mail.net>"]
 license = "MIT"
 documentation = "https://aurora0001.github.io/rawr/doc/rawr/index.html"
 repository = "https://github.com/Aurora0001/rawr"
@@ -18,6 +18,7 @@ exclude = [
 serde_codegen = "0.8"
 
 [dependencies]
-hyper = "0.9.10"
+hyper = "0.10"
+hyper-native-tls = "0.3"
 serde = "0.7.14"
 serde_json = "0.7.4"

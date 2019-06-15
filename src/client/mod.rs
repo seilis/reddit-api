@@ -32,8 +32,10 @@ use std::io::Read;
 
 use hyper::client::{Client, RequestBuilder};
 use hyper::header::UserAgent;
-use hyper::net::DefaultConnector;
+use hyper::net::HttpsConnector;
 use hyper::status::StatusCode::Unauthorized;
+use hyper_native_tls::NativeTlsClient;
+
 
 use serde_json::from_str;
 use serde::Deserialize;
@@ -63,7 +65,8 @@ impl RedditClient {
                -> RedditClient {
         // Connection pooling is problematic if there are pauses/sleeps in the program, so we
         // choose to disable it by using a non-pooling connector.
-        let client = Client::with_connector(DefaultConnector::default());
+        let ssl = NativeTlsClient::new().unwrap();
+        let client = Client::with_connector(HttpsConnector::new(ssl));
 
         let this = RedditClient {
             client: client,
