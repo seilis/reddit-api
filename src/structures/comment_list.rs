@@ -234,7 +234,7 @@ impl<'a> Iterator for CommentStream<'a> {
                 let res = next_iter.unwrap();
                 let name = res.name().to_owned();
 
-                if self.set.contains(name) {
+                if self.set.contains(&name) {
                     self.current_iter = Some(iter);
                     self.next()
                 } else {
