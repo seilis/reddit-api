@@ -67,9 +67,9 @@ impl<'a> Subreddit<'a> {
     ///
     /// }
     /// ```
-    pub fn new_stream(self) -> PostStream<'a> {
+    pub fn new_stream(&self) -> PostStream<'a> {
         let url = format!("/r/{}/new?limit=5", self.name);
-        PostStream::new(&self.client, url)
+        PostStream::new(self.client, url)
     }
 
     /// Gets a listing of the new feed for this subreddit.
