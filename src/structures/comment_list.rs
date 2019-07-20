@@ -233,14 +233,8 @@ impl<'a> Iterator for CommentStream<'a> {
             if next_iter.is_some() {
                 let res = next_iter.unwrap();
                 let name = res.name().to_owned();
-                // VecDeque.contains is not stable yet!
-                let mut contains = false;
-                for item in &self.set {
-                    if item == &name {
-                        contains = true;
-                    }
-                }
-                if contains {
+
+                if self.set.contains(name) {
                     self.current_iter = Some(iter);
                     self.next()
                 } else {
